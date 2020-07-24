@@ -25,4 +25,4 @@ curl -d '{
    }
 }'\
      -H "Content-Type: application/json" \
-     -X POST https://sklearnapp.azurewebsites.net/predict
+     -X POST https://skllearnapp.azurewebsites.net/predict
