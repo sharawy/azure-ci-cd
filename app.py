@@ -61,9 +61,9 @@ def predict():
     inference_payload = pd.DataFrame(json_payload)
     LOG.info(f"inference payload DataFrame: {inference_payload}")
     scaled_payload = scale(inference_payload)
+    clf = joblib.load("boston_housing_prediction.joblib")
     prediction = list(clf.predict(scaled_payload))
     return jsonify({'prediction': prediction})
 
 if __name__ == "__main__":
-    clf = joblib.load("boston_housing_prediction.joblib")
     app.run(host='0.0.0.0', port=80, debug=True)
