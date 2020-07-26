@@ -9,6 +9,6 @@ test:
 	python -m pytest -vv --cov=myrepolib 
 lint:
 	#hadolint Dockerfile 
-	pylint --disable=R,C,W1203 app.py
+	python -m pylint --disable=R,C,W1203 app.py
 
 all: install lint test

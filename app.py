@@ -9,7 +9,6 @@ from sklearn.preprocessing import StandardScaler
 app = Flask(__name__)
 LOG = create_logger(app)
 LOG.setLevel(logging.INFO)
-clf = None
 
 def scale(payload):
     """Scales Payload"""
@@ -61,9 +60,7 @@ def predict():
     inference_payload = pd.DataFrame(json_payload)
     LOG.info(f"inference payload DataFrame: {inference_payload}")
     scaled_payload = scale(inference_payload)
-    global clf
-    if not clf:
-      clf = joblib.load("boston_housing_prediction.joblib")
+    clf = joblib.load("boston_housing_prediction.joblib")
     prediction = list(clf.predict(scaled_payload))
     return jsonify({'prediction': prediction})
 
