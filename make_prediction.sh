@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PORT=80
+PORT=8080
 echo "Port: $PORT"
 
 # POST method predict
@@ -25,4 +25,4 @@ curl -d '{
    }
 }'\
      -H "Content-Type: application/json" \
-     -X POST https://skllearnapp.azurewebsites.net/predict
+     -X POST localhost:$PORT/predict
